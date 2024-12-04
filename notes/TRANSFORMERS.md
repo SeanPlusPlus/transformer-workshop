@@ -160,7 +160,67 @@ Customize a pre-trained model for your specific task or dataset by fine-tuning i
     - Requires labeled data and computational resources for training.
     - Takes time to fine-tune and evaluate the model.
 
-- Example: Fine-tuning `distilbert-base-uncased` on the IMDb dataset for sentiment analysis.
+#### Examples
+
+**1. Sentiment Analysis on a Custom Dataset**: Fine-tune a model like `distilbert-base-uncased` for sentiment analysis on a specific dataset, such as product reviews or tweets. General-purpose sentiment analysis models may not work well on niche datasets. Fine-tuning ensures the model understands domain-specific vocabulary and context.
+
+```python
+from datasets import load_dataset
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, Trainer, TrainingArguments
+
+# Load dataset
+dataset = load_dataset("your_custom_dataset")
+
+# Tokenize data
+tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
+def preprocess(data):
+    return tokenizer(data["text"], padding="max_length", truncation=True)
+tokenized_datasets = dataset.map(preprocess, batched=True)
+
+# Load pre-trained model
+model = AutoModelForSequenceClassification.from_pretrained("distilbert-base-uncased", num_labels=2)
+
+# Define training arguments
+training_args = TrainingArguments(
+    output_dir="./results",
+    evaluation_strategy="epoch",
+    learning_rate=2e-5,
+    num_train_epochs=3,
+    per_device_train_batch_size=8,
+)
+
+# Fine-tune model
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    train_dataset=tokenized_datasets["train"],
+    eval_dataset=tokenized_datasets["test"],
+)
+trainer.train()
+```
+
+**2. Named Entity Recognition (NER) for Domain-Specific Terms**: Fine-tune a model like `bert-base-cased` for identifying entities specific to a domain, such as medical terms or legal jargon. General NER models may not recognize entities in specialized fields without adaptation.
+
+Example:
+- Dataset: Sentences annotated with terms like DISEASE, DRUG, and SYMPTOM.
+- Outcome: A model that can extract entities from medical records or research papers.
+
+**3. Question Answering on a Specific Dataset**: Fine-tune a pre-trained model like `bert-large-uncased-whole-word-masking-finetuned-squad` for answering questions in a niche dataset. Domain-specific datasets often include unique phrasing and context not covered by general-purpose models.
+
+Example:
+- Dataset: A custom FAQ or knowledge base (e.g., a company's internal wiki).
+- Outcome: A question-answering model tailored to your dataset for improved accuracy.
+
+**4. Text Classification for Multilabel Tasks**: Fine-tune a model like `roberta-base` for classifying text into multiple categories simultaneously. Pre-trained models may not support multilabel classification without fine-tuning.
+
+Example:
+- Dataset: News articles tagged with multiple topics (e.g., politics, sports, technology).
+- Outcome: A model capable of assigning multiple tags to a single article.
+
+Why Fine-Tuning is Powerful
+- Fine-tuning allows pre-trained models to specialize in domain-specific tasks, outperforming general-purpose APIs or models.
+- It provides flexibility for tasks that don’t fit into the out-of-the-box pipelines or pre-trained functionality.
+
 
 ---
 
