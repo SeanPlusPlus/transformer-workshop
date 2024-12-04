@@ -56,7 +56,9 @@ Load a pre-trained model locally using libraries like Hugging Face Transformers 
 
 #### Examples
 
-**Sentiment Analysis**: classifying input text as positive, negative, or neutral. 
+**Sentiment Analysis**
+
+Classifying input text as positive, negative, or neutral. 
 
 ```python
 from transformers import pipeline
@@ -75,7 +77,9 @@ print(result)
 # [{'label': 'POSITIVE', 'score': 0.9998}]
 ```
 
-**Named Entity Recognition (NER)**: Identifies and categorizes entities in text, such as names, organizations, and locations.
+**Named Entity Recognition (NER)**
+
+Identifies and categorizes entities in text, such as names, organizations, and locations.
 
 
 ```python
@@ -97,7 +101,9 @@ print(result)
 #  {'entity_group': 'ORG', 'score': 0.995, 'word': 'United States'}]
 ```
 
-**Text Summarization**: Condenses long articles or passages into shorter summaries.
+**Text Summarization**
+
+Condenses long articles or passages into shorter summaries.
 
 ```python
 from transformers import pipeline
@@ -121,7 +127,9 @@ print(result)
 # improving efficiency and reducing costs. Challenges include ethical considerations and data privacy.'}]
 ```
 
-**Question Answering**:
+**Question Answering**
+
+Answer a question.
 
 ```python
 from transformers import pipeline
