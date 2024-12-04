@@ -28,6 +28,8 @@ Use a hosted service like OpenAIâ€™s API to access models such as GPT-4 or DALLÂ
 
 - Code Generation
 
+- Building out a tutorial and suite of docs to learn more about Transformers (this thing right here, lol)
+
 ---
 
 ### 2. Using a Pre-Trained Model (Local Inference)
