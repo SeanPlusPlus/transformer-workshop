@@ -30,7 +30,7 @@ Use a hosted service like OpenAI’s API to access models such as GPT-4 or DALL�
 
 ---
 
-### 2.. Using a Pre-Trained Model (Local Inference)
+### 2. Using a Pre-Trained Model (Local Inference)
 
 Load a pre-trained model locally using libraries like Hugging Face Transformers and run inference on your data.
     
@@ -43,7 +43,106 @@ Load a pre-trained model locally using libraries like Hugging Face Transformers 
     - Limited to what pre-trained model was used for.
     - Requires setting up local env and dependencies
 
-- Example: Using Hugging Face's `pipeline` to analyze sentiment or classify text.
+#### Examples
+
+**Sentiment Analysis**: classifying input text as positive, negative, or neutral. 
+
+```python
+from transformers import pipeline
+
+# Load pre-trained sentiment analysis pipeline
+sentiment_analyzer = pipeline("sentiment-analysis")
+
+# Input text
+text = "I absolutely loved this movie! It was fantastic."
+
+# Get predictions
+result = sentiment_analyzer(text)
+print(result)
+
+# Output
+# [{'label': 'POSITIVE', 'score': 0.9998}]
+```
+
+**Named Entity Recognition (NER)**: Identifies and categorizes entities in text, such as names, organizations, and locations.
+
+
+```python
+from transformers import pipeline
+
+# Load pre-trained NER pipeline
+ner_pipeline = pipeline("ner", grouped_entities=True)
+
+# Input text
+text = "Barack Obama was born in Hawaii and became the 44th President of the United States."
+
+# Get entities
+result = ner_pipeline(text)
+print(result)
+
+# Output
+# [{'entity_group': 'PER', 'score': 0.998, 'word': 'Barack Obama'},
+#  {'entity_group': 'LOC', 'score': 0.999, 'word': 'Hawaii'},
+#  {'entity_group': 'ORG', 'score': 0.995, 'word': 'United States'}]
+```
+
+**Text Summarization**: Condenses long articles or passages into shorter summaries.
+
+```python
+from transformers import pipeline
+
+# Load pre-trained summarization pipeline
+summarizer = pipeline("summarization")
+
+# Input text
+text = """
+Artificial Intelligence (AI) is transforming the world. From healthcare to transportation,
+AI is being used to improve efficiency, reduce costs, and solve complex problems.
+However, challenges such as ethical considerations and data privacy remain critical.
+"""
+
+# Get summary
+result = summarizer(text, max_length=50, min_length=10, do_sample=False)
+print(result)
+
+# Output
+# [{'summary_text': 'Artificial Intelligence is transforming industries like healthcare and transportation,
+# improving efficiency and reducing costs. Challenges include ethical considerations and data privacy.'}]
+```
+
+**Question Answering**:
+
+```python
+from transformers import pipeline
+
+# Load pre-trained question-answering pipeline
+qa_pipeline = pipeline("question-answering")
+
+# Input question and context
+context = """
+The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. 
+It is named after the engineer Gustave Eiffel, whose company designed and built the tower.
+"""
+question = "Who designed the Eiffel Tower?"
+
+# Get answer
+result = qa_pipeline(question=question, context=context)
+print(result)
+
+# Output
+# {'score': 0.99, 'start': 63, 'end': 78, 'answer': 'Gustave Eiffel'}
+```
+
+Why These Examples Work
+
+1. Sentiment Analysis demonstrates a common and easy-to-visualize use case.
+2. NER showcases the ability to extract structured information from unstructured text.
+3. Text Summarization is valuable for condensing large volumes of information.
+4. Question Answering highlights the model’s ability to understand and reason based on context.
+
+These tasks are straightforward to implement and provide practical utility, making them perfect for showcasing pre-trained models in action. Let me know if you’d like to expand on any of these! 🚀
+
+Using a pre-trained model locally provides greater control over the inference process, allowing you to customize aspects like tokenization, batch sizes, and runtime behavior. Additionally, it avoids reliance on external APIs, reducing latency, costs, and potential privacy concerns since all computations happen on your own infrastructure.
 
 ---
 
