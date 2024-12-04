@@ -84,3 +84,16 @@ Output
 - When experimenting with customized model settings and trying out advanced configurations.
 
 - When working directly with PyTorch and needing more fine-grained model manipulation.
+
+**Contrast with the `pipeline` API used in hello world**
+
+- The pipeline function is a high-level abstraction that simplifies common tasks like text generation, question answering, and more.
+- Fewer Lines of Code: With pipeline, you don't need to worry about tokenization or decoding explicitly. It takes care of these processes internally, allowing you to write less code.
+- Less Flexibility: The trade-off for this simplicity is that you have less control over the specific parameters of the model. While you can still adjust things like max_length and temperature, you don't have direct access to the raw model and tokenizer.
+- All-in-One: The pipeline handles everything—from model loading to generation and decoding—which is great for quick prototyping.
+
+When to Use:
+
+- When we want quick, straightforward results without needing in-depth configuration.
+- When building prototypes or getting started with text generation.
+- When you don’t need detailed control over the generation process or are just trying things out.
