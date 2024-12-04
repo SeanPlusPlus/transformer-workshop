@@ -39,6 +39,7 @@ pip install -r requirements.txt
 ### Running the Project
 
 ```
+cd text-generation
 python hello_world.py
 ```
 

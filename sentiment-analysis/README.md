@@ -33,14 +33,13 @@ pyenv install 3.11.6
 Clone the repo to your local machine
 
 ```
-git clone git@github.com:SeanPlusPlus/sentiment-analysis.git
+git clone git@github.com:SeanPlusPlus/transformer-workshop.git
 ```
 
 Set Python 3.11.6 as the Local Version
- - Navigate to the project directory and set the local version:
 
 ```
-cd transformer-workshop/sentiment-analysis
+cd transformer-workshop
 pyenv local 3.11.6
 ```
 
@@ -83,6 +82,7 @@ pip install -r requirements.txt
 ### Running the Project
 
 ```
+cd sentiment-analysis
 python sentiment_analysis.py
 ```
 
