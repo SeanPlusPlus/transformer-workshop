@@ -226,7 +226,7 @@ Why Fine-Tuning is Powerful
 
 ### 4. Building a Model from Scratch:
 
-Train a transformer model from randomly initialized weights using a large dataset.
+Building a model from scratch is a rare and resource-intensive endeavor, but it is appropriate in specific scenarios where pre-trained models or fine-tuning are insufficient.
 
 - Pros:
     - Total control over architecture and training process.
@@ -236,7 +236,43 @@ Train a transformer model from randomly initialized weights using a large datase
     - Requires vast computational resources and expertise.
     - Needs massive datasets for pre-training to achieve competitive performance.
 
-- Example: Training a custom GPT-like model using PyTorch or TensorFlow from scratch.
+#### Examples for Building a Model from Scratch
+
+1. Researching Novel Architectures
+    - What it is: Designing and testing a new transformer architecture for academic or experimental purposes.
+    - Why It’s Appropriate:
+        - When pushing the boundaries of current AI capabilities.
+        - Exploring innovations in model efficiency, interpretability, or scalability.
+    - Example Use Case:
+        - Developing a transformer model optimized for edge devices with significantly reduced computational requirements.
+        - Researching a multi-modal transformer that simultaneously processes text, images, and audio.
+
+2. Addressing a Highly Specialized Domain
+    - What it is: Creating a model tailored for a domain where no suitable pre-trained models or datasets exist.
+    - Why It’s Appropriate:
+        - When the domain-specific vocabulary, structure, or data distribution is fundamentally different from those used in existing pre-trained models.
+    - Example Use Case:
+        - Building a model for highly technical fields like quantum physics, which requires understanding specialized equations and terms.
+        - Training a transformer on ancient scripts or languages with no modern datasets (e.g., Sumerian or Mayan hieroglyphs).
+
+3. Training a Multilingual Model for Low-Resource Languages
+    - What it is: Building a language model for underrepresented or endangered languages.
+    - Why It’s Appropriate:
+        - Pre-trained models often perform poorly on low-resource languages due to insufficient training data.
+        - A custom-built model can incorporate linguistic nuances and structure specific to those languages.
+    - Example Use Case:
+        - Developing a transformer trained on multiple dialects of an endangered language to support language preservation and revitalization.
+        - Training a translation model for languages with no direct datasets (e.g., translating between small, local languages in a remote region).
+
+**Why Building From Scratch is Rare**
+
+1. Resource-Intensive: Requires massive datasets and significant computational resources (e.g., TPUs or GPUs running for weeks).
+2. Expertise Required: Demands deep knowledge of transformer architectures, optimization techniques, and large-scale data processing.
+3. Existing Models Are Often Enough: Pre-trained or fine-tuned models usually cover most real-world needs efficiently.
+
+**Key Takeaway**
+
+Building a model from scratch is best reserved for cutting-edge research or ultra-specialized domains where existing models cannot be adapted or extended. For most practical applications, fine-tuning or using pre-trained models will suffice.
 
 ---
 
