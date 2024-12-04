@@ -1,4 +1,8 @@
 # Text Generation
+
+
+Welcome to the Text Generation module of the transformer-workshop repository! This subdirectory focuses on the exciting world of text generation using pre-trained transformer models. Whether you are interested in creative writing, building chatbots, or experimenting with AI storytelling, this module will introduce you to the foundational concepts and tools for generating coherent and contextually relevant text with just a few lines of code.
+
 ---
 
 ## Project Setup
