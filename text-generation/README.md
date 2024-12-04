@@ -52,3 +52,21 @@ Generated Text 1: Once upon a time, I have been living peacefully in another wor
 Alright, time to add some more interesting scripts to our tutorial!
 
 ---
+
+### Direct Use of `GPT2LMHeadModel` and `GPT2Tokenizer`
+
+```
+python gpt2_intro.py
+```
+
+Output
+
+```
+*** Once upon a time it must have been an ancient tradition that at the same time the city's rich culture was being threatened by an overzealous bureaucracy. It was a moment of wonderment of how they could make sense of an entire nation and the
+```
+
+**Overview**
+
+This approach gives us direct access to the tokenizer and model, allowing us to configure the text generation process in detail.
+
+We can modify low-level parameters (like the `no_repeat_ngram_size`, `top_k`, and `top_p`) which allow us to control how diverse or repetitive the generated text is.

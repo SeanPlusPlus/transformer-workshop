@@ -23,5 +23,5 @@ generated_outputs = model.generate(
 
 # Decode and print the output
 generated_text = tokenizer.decode(generated_outputs[0], skip_special_tokens=True)
-print(generated_text)
+print('***', generated_text)
 
