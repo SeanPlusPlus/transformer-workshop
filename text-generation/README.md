@@ -41,7 +41,7 @@ python hello_world.py
 You should see output like
 
 ```
-[{'label': 'POSITIVE', 'score': 0.999...}]
+Generated Text 1: Once upon a time, I have been living peacefully in another world. I now spend my evenings in a strange land, in a strange town a little over fifty miles from their home where we are living. I make my way through the strange village,
 ```
 
 Alright, time to add some more interesting scripts to our tutorial!
