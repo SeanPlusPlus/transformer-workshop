@@ -5,6 +5,7 @@ High-Level Hierarchy of Interacting with Transformers
 ---
 
 **1. Hitting the OpenAI API (Out-of-the-Box Solution)**
+
     - Description: Use a hosted service like OpenAI’s API to access models such as GPT-4 or DALL·E.
     - Pros:
         - No infrastructure or training required.
@@ -19,6 +20,7 @@ High-Level Hierarchy of Interacting with Transformers
 ---
 
 **2. Using a Pre-Trained Model (Local Inference)**
+
     - Description: Load a pre-trained model locally using libraries like Hugging Face Transformers and run inference on your data.
     - Pros:
         - No training required.
@@ -32,6 +34,7 @@ High-Level Hierarchy of Interacting with Transformers
 ---
 
 **3. Fine-Tuning a Pre-Trained Model**
+
     - Description: Customize a pre-trained model for your specific task or dataset by fine-tuning its weights.
     - Pros:
         - Combines the benefits of pre-training with task-specific performance.
