@@ -40,7 +40,7 @@ Set Python 3.11.6 as the Local Version
  - Navigate to the project directory and set the local version:
 
 ```
-cd sentiment-analysis
+cd transformer-workshop/sentiment-analysis
 pyenv local 3.11.6
 ```
 
