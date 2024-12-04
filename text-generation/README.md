@@ -67,6 +67,20 @@ Output
 
 **Overview**
 
-This approach gives us direct access to the tokenizer and model, allowing us to configure the text generation process in detail.
+- This approach gives us direct access to the tokenizer and model, allowing us to configure the text generation process in detail.
 
-We can modify low-level parameters (like the `no_repeat_ngram_size`, `top_k`, and `top_p`) which allow us to control how diverse or repetitive the generated text is.
+- We can modify low-level parameters (like the `no_repeat_ngram_size`, `top_k`, and `top_p`) which allow us to control how diverse or repetitive the generated text is.
+
+- If we need to customize how text is tokenized, or work directly with the raw input/output tensors, this is the best approach.
+
+- Since this method deals with the model directly, we need to handle the data format and tensors explicitly. `input_ids` are encoded in PyTorch tensor format (`return_tensors='pt'`).
+
+- After generating text, we need to decode it manually using the tokenizer.
+
+**When to Use**
+
+- When we need greater control over the text generation process.
+
+- When experimenting with customized model settings and trying out advanced configurations.
+
+- When working directly with PyTorch and needing more fine-grained model manipulation.
