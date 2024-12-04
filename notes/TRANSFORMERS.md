@@ -54,3 +54,31 @@ Customize a pre-trained model for your specific task or dataset by fine-tuning i
     - Example: Fine-tuning `distilbert-base-uncased` on the IMDb dataset for sentiment analysis.
 
 ---
+
+### 4. Building a Model from Scratch:
+
+Train a transformer model from randomly initialized weights using a large dataset.
+
+    - Pros:
+        - Total control over architecture and training process.
+        - Ability to innovate beyond existing pre-trained architectures.
+    
+    - Cons:
+        - Requires vast computational resources and expertise.
+        - Needs massive datasets for pre-training to achieve competitive performance.
+    
+    - Example: Training a custom GPT-like model using PyTorch or TensorFlow from scratch.
+
+---
+
+## Comparison 
+
+| Approach                 | Ease of Use | Flexibility | Cost       | Computational Requirements | When to Use                                           |
+|--------------------------|-------------|-------------|------------|----------------------------|------------------------------------------------------|
+| OpenAI API               | High        | Low         | Pay-as-you-go | Low                        | Quick results, no setup required                    |
+| Pre-Trained Model        | Medium      | Medium      | Free        | Medium                     | Use cases align with pre-trained capabilities        |
+| Fine-Tuning              | Low         | High        | Medium      | High                       | Task-specific customization with labeled data       |
+| Building from Scratch    | Very Low    | Very High   | High        | Very High                  | For research or custom architectures                |
+
+---
+
