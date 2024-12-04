@@ -28,7 +28,7 @@ Use a hosted service like OpenAIâ€™s API to access models such as GPT-4 or DALLÂ
 
 - Code Generation
 
-- Building out a tutorial and suite of docs to learn more about Transformers (this thing right here, lol)
+- All the fun hacky games I build that leverage the API
 
 ---
 
