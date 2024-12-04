@@ -2,6 +2,15 @@
 
 High-Level Hierarchy of Interacting with Transformers
 
+
+| Approach                 | Ease of Use | Flexibility | Cost       | Computational Requirements | When to Use                                           |
+|--------------------------|-------------|-------------|------------|----------------------------|------------------------------------------------------|
+| 1. OpenAI API               | High        | Low         | Pay-as-you-go | Low                        | Quick results, no setup required                    |
+| 2. Pre-Trained Model        | Medium      | Medium      | Free        | Medium                     | Use cases align with pre-trained capabilities        |
+| 3. Fine-Tuning              | Low         | High        | Medium      | High                       | Task-specific customization with labeled data       |
+| 4. Building from Scratch    | Very Low    | Very High   | High        | Very High                  | For research or custom architectures                |
+
+
 ---
 
 ### 1. Hitting the OpenAI API (Out-of-the-Box Solution)
@@ -275,15 +284,3 @@ Building a model from scratch is a rare and resource-intensive endeavor, but it 
 Building a model from scratch is best reserved for cutting-edge research or ultra-specialized domains where existing models cannot be adapted or extended. For most practical applications, fine-tuning or using pre-trained models will suffice.
 
 ---
-
-## Comparison 
-
-| Approach                 | Ease of Use | Flexibility | Cost       | Computational Requirements | When to Use                                           |
-|--------------------------|-------------|-------------|------------|----------------------------|------------------------------------------------------|
-| OpenAI API               | High        | Low         | Pay-as-you-go | Low                        | Quick results, no setup required                    |
-| Pre-Trained Model        | Medium      | Medium      | Free        | Medium                     | Use cases align with pre-trained capabilities        |
-| Fine-Tuning              | Low         | High        | Medium      | High                       | Task-specific customization with labeled data       |
-| Building from Scratch    | Very Low    | Very High   | High        | Very High                  | For research or custom architectures                |
-
----
-
