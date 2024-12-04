@@ -97,3 +97,21 @@ When to Use:
 - When we want quick, straightforward results without needing in-depth configuration.
 - When building prototypes or getting started with text generation.
 - When you don’t need detailed control over the generation process or are just trying things out.
+
+### Text Generation Tests
+
+```
+python text_gen_tests.py
+```
+
+**What This Script Does**
+
+1. Predefined Test Cases:
+    - The test_cases list contains dictionaries that define different combinations of prompts and parameters.
+    - Each dictionary includes: prompt, max_length, temperature, top_k, top_p, and num_return_sequences.
+
+2. Automated Exploration:
+    - Instead of prompting for input, the script iterates over the test_cases list and generates text based on each configuration.
+    - This allows you to quickly see the impact of different parameters on the generated output.
+
+This approach is great for testing and understanding how different settings influence the generated text without manual input, allowing you to iterate and analyze efficiently.
