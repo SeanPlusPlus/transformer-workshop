@@ -46,13 +46,15 @@ def generate_text(prompt, max_length, temperature, top_k, top_p, num_return_sequ
         do_sample=True,
         top_k=top_k,
         top_p=top_p,
-        temperature=temperature
+        temperature=temperature,
+        pad_token_id=tokenizer.eos_token_id  # Suppress the warning by explicitly setting pad_token_id
     )
+
 
     # Decode and print the output
     for i, output in enumerate(generated_outputs):
         generated_text = tokenizer.decode(output, skip_special_tokens=True)
-        print(f"\nPrompt: {prompt}\nGenerated Text {i + 1}:\n{generated_text}\n{'-'*40}")
+        print(f"\nPrompt: {prompt}\nGenerated Text {i + 1}:\n{generated_text}\n{'-'*40}\n\n\n")
 
 if __name__ == "__main__":
     # Iterate over predefined test cases
