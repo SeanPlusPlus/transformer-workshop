@@ -31,6 +31,14 @@ test_cases = [
         "top_p": 0.85,
         "num_return_sequences": 1,
     },
+    {
+        "prompt": "Describe how a transistor works",
+        "max_length": 40,
+        "temperature": 1.5,
+        "top_k": 30,
+        "top_p": 0.85,
+        "num_return_sequences": 1,
+    },
 ]
 
 def generate_text(prompt, max_length, temperature, top_k, top_p, num_return_sequences):
