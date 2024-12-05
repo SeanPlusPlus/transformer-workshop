@@ -21,7 +21,7 @@ It's been a pretty cool first for me - using ChatGPT to autogenerate an iterativ
     - Fine-tune a pre-trained transformer model (distilbert-base-uncased) for IMDb sentiment analysis.
     - Build a clear, step-by-step tutorial to guide others through the process.
 
-2. Explore Hugging Face Pipelines:
+2. Explore Text Generation:
 
     - Experiment with pre-trained models for tasks like text summarization, question answering, and more.
     - Understand how different transformer architectures are optimized for various NLP tasks.
