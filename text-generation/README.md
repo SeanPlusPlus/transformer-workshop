@@ -115,3 +115,13 @@ python text_gen_tests.py
     - This allows you to quickly see the impact of different parameters on the generated output.
 
 This approach is great for testing and understanding how different settings influence the generated text without manual input, allowing you to iterate and analyze efficiently.
+
+### Controlled Text Generation
+
+```pythong controlled_text_gen.py```
+
+**What This Script Illustrates** 
+1. Prompt Engineering: Crafting specific prompts to guide the model toward desired outputs.
+2. Constraint Handling: Introducing custom logic to filter or modify the output text.
+3. Sampling Parameters: Understanding the impact of temperature, top_k, and top_p on text diversity.
+4. N-gram Repetition Control: Using no_repeat_ngram_size to avoid repetitive sequences.
