@@ -165,3 +165,14 @@ cython_debug/
 /results/
 /logs/
 /fine_tuned_sentiment_model/
+
+# Fine-tuned models and outputs
+/fine_tuned_gpt2/
+
+# Training logs and results
+/logs/
+
+
+/text-generation/fine_tuned_gpt2/
+/text-generation/logs/
+/text-generation/*.html
