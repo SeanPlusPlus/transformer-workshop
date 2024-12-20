@@ -32,7 +32,7 @@ for prompt in prompts:
         temperature=0.7,
         top_k=50,
         top_p=0.95,
-        num_return_sequences=3,
+        num_return_sequences=5,
         no_repeat_ngram_size=2,
     )
     decoded_texts = [tokenizer.decode(output, skip_special_tokens=True) for output in outputs]
