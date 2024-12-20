@@ -148,3 +148,20 @@ This functionality is split into two parts:
 
 5. HTML File Generation:
     - Outputs results to a styled HTML file, which is automatically opened in the default web browser.
+
+#### How It Works
+
+Text Generation Process
+
+1. Prompt Input: Prompts are tokenized using the GPT-2 tokenizer.
+
+2. Model Inference: The GPT-2 model generates text using sampling-based techniques with configurable parameters:
+    - `temperature`: Adjusts randomness in text generation.
+    - `top_k` and `top_p`: Controls sampling quality.
+    - `num_return_sequences`: Specifies how many variations are generated per prompt.
+
+3. Constraint Filtering: Texts containing banned words are flagged and excluded from the output.
+
+4. HTML Rendering:
+    - Prompts and generated texts are organized into styled cards using Bootstrap.
+    - Skipped texts are highlighted for clarity.
