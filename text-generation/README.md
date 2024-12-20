@@ -120,8 +120,31 @@ This approach is great for testing and understanding how different settings infl
 
 ```pythong controlled_text_gen.py```
 
-**What This Script Illustrates** 
-1. Prompt Engineering: Crafting specific prompts to guide the model toward desired outputs.
-2. Constraint Handling: Introducing custom logic to filter or modify the output text.
-3. Sampling Parameters: Understanding the impact of temperature, top_k, and top_p on text diversity.
-4. N-gram Repetition Control: Using no_repeat_ngram_size to avoid repetitive sequences.
+
+**Overview**
+
+The `controlled_text_gen` script generates text based on predefined prompts using the GPT-2 model. It applies constraints to filter generated text and outputs the results into an HTML file, styled with Bootstrap, for easy review.
+
+This functionality is split into two parts:
+
+1. Core Logic (`controlled_text_gen.py`): Handles text generation and processing.
+2. HTML Generation (`html_generator.py`): Encapsulates HTML rendering logic to keep the core script clean and focused.
+
+
+#### Key Features `controlled_text_gen.py`
+
+1. Model and Tokenizer Setup:
+    - Utilizes GPT-2 from Hugging Face's transformers library.
+    - Automatically configures the device (cuda or cpu) for efficient execution.
+
+2. Prompt Definition:
+    - Generates text for a set of predefined prompts (e.g., poetry, explanations, and descriptions).
+
+3. Custom Constraints:
+    - Filters generated text based on banned words (e.g., bad, terrible, worst).
+
+4. Text Output:
+    - Encodes filtered results into an HTML structure via a helper function imported from html_generator.py.
+
+5. HTML File Generation:
+    - Outputs results to a styled HTML file, which is automatically opened in the default web browser.
