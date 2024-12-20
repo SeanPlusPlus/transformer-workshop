@@ -165,3 +165,159 @@ Text Generation Process
 4. HTML Rendering:
     - Prompts and generated texts are organized into styled cards using Bootstrap.
     - Skipped texts are highlighted for clarity.
+
+## Fine-Tuning GPT-2 with HTML Output
+
+`gpt2_fine_tuning.pyt`
+
+# README: Fine-Tuning GPT-2 with HTML Output
+
+## Overview
+This script fine-tunes OpenAI's GPT-2 model using a small, predefined dataset and generates text based on custom prompts. It also displays the generated output in an HTML file that opens in your default web browser.
+
+---
+
+## Features
+
+1. **Fine-Tuning**:
+   - Fine-tunes GPT-2 with custom training and evaluation datasets.
+   - Supports tokenization, padding, and truncation for consistent input lengths.
+   - Saves the fine-tuned model for reuse.
+
+2. **Text Generation**:
+   - Generates text based on user-defined prompts.
+   - Outputs generated text into a styled HTML file for easy visualization.
+
+3. **Integrated HTML Output**:
+   - Dynamically creates an HTML file with prompts and their corresponding generated text.
+   - Automatically opens the HTML file in your browser.
+
+---
+
+## Script Breakdown
+
+### 1. Model and Tokenizer Setup
+- Loads the pre-trained GPT-2 model and tokenizer from Hugging Face.
+- Ensures the tokenizer has a padding token for proper sequence alignment.
+
+```python
+model_name = "gpt2"
+tokenizer = GPT2Tokenizer.from_pretrained(model_name)
+model = GPT2LMHeadModel.from_pretrained(model_name)
+tokenizer.pad_token = tokenizer.eos_token
+```
+
+### 2. Dataset Definition
+- Defines training and evaluation datasets directly in the script for simplicity.
+- Converts datasets into the 🤗 `Dataset` format.
+
+```python
+train_data = [
+    "The sun is shining brightly today.",
+    "AI is revolutionizing many industries.",
+    "Fine-tuning GPT-2 allows customization for specific tasks.",
+]
+
+eval_data = [
+    "The weather forecast predicts a rainy weekend.",
+    "Natural language processing is a fascinating field.",
+    "Large language models can generate coherent text.",
+]
+```
+
+### 3. Tokenization
+- Tokenizes datasets with truncation and padding to ensure consistent input lengths.
+
+```python
+def tokenize_function(examples):
+    return tokenizer(examples["text"], truncation=True, padding="max_length", max_length=128)
+
+train_dataset = train_dataset.map(tokenize_function, batched=True)
+eval_dataset = eval_dataset.map(tokenize_function, batched=True)
+```
+
+### 4. Fine-Tuning
+- Uses the Hugging Face `Trainer` API for fine-tuning.
+- Configures training arguments for epochs, batch size, and learning rate.
+- Saves the fine-tuned model.
+
+```python
+trainer = Trainer(
+    model=model,
+    args=training_args,
+    train_dataset=train_dataset,
+    eval_dataset=eval_dataset,
+    data_collator=data_collator
+)
+
+trainer.train()
+model.save_pretrained(output_dir)
+tokenizer.save_pretrained(output_dir)
+```
+
+### 5. Text Generation
+- Loads the fine-tuned model and generates text for predefined prompts.
+- Dynamically generates HTML content with the results.
+
+```python
+prompts = ["AI is", "The weather", "Fine-tuning GPT"]
+input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(device)
+outputs = model.generate(input_ids, max_length=50, num_return_sequences=1)
+generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
+```
+
+### 6. HTML Output
+- Creates an HTML file styled with inline CSS to display prompts and their generated outputs.
+- Automatically opens the HTML file in the default browser.
+
+```python
+output_html = """
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generated Text</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .prompt {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .output {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generated Text Output</h1>
+"""
+
+# Open in browser
+webbrowser.open(f"file://{os.path.abspath(html_file)}")
+```
+
+---
+
+## How to Run
+
+1. **Install Dependencies**:
+   - Install the required Python libraries:
+     ```bash
+     pip install torch transformers datasets
+     ```
+
+2. **Run the Script**:
+   - Execute the script to fine-tune the model and generate text:
+     ```bash
+     python gpt2_fine_tuning.py
+     ```
+
+3. **View Output**:
+   - The script automatically opens the HTML file in your default web browser.
+
+
