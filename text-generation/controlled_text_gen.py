@@ -2,7 +2,7 @@ import os
 import webbrowser
 import torch
 from transformers import GPT2LMHeadModel, GPT2Tokenizer
-from html import escape
+from html_generator import generate_html_content
 
 # Load pre-trained model and tokenizer
 model_name = "gpt2"
@@ -21,36 +21,10 @@ prompts = [
 ]
 custom_ban_words = ["bad", "terrible", "worst"]  # Words to avoid in generation
 
-# Function to enforce constraints
-def is_word_allowed(output_text, banned_words):
-    for word in banned_words:
-        if word in output_text:
-            return False
-    return True
-
-# Generate text for each prompt
-output_html = """
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Generated Text</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, sans-serif; /* Fallback font style */
-            background-color: #f8f9fa; /* Bootstrap light gray */
-        }
-    </style>
-</head>
-<body class="bg-light text-dark">
-    <div class="container py-5">
-        <h1 class="mb-4 text-center">Text Generation Output</h1>
-"""
-
+# Generate text for each prompt and collect outputs
+outputs_by_prompt = []
 for prompt in prompts:
     input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(device)
-
-    # Generate multiple sequences with sampling enabled
     outputs = model.generate(
         input_ids,
         max_length=50,
@@ -61,42 +35,11 @@ for prompt in prompts:
         num_return_sequences=3,
         no_repeat_ngram_size=2,
     )
+    decoded_texts = [tokenizer.decode(output, skip_special_tokens=True) for output in outputs]
+    outputs_by_prompt.append(decoded_texts)
 
-    output_html += f"""
-        <div class="card mb-4 shadow-sm">
-            <div class="card-body">
-                <h5 class="card-title">Prompt:</h5>
-                <p class="card-text"><strong>{escape(prompt.strip())}</strong></p>
-                <h6>Generated Texts:</h6>
-                <ul class="list-group list-group-flush">
-    """
-    for i, output in enumerate(outputs):
-        decoded_text = tokenizer.decode(output, skip_special_tokens=True)
-
-        # Apply custom constraints
-        if is_word_allowed(decoded_text, custom_ban_words):
-            output_html += f"""
-                <li class="list-group-item">
-                    <strong>Generated Text {i+1}:</strong> {escape(decoded_text)}
-                </li>
-            """
-        else:
-            output_html += f"""
-                <li class="list-group-item text-danger">
-                    <strong>Generated Text {i+1}:</strong> [Skipped due to banned words]
-                </li>
-            """
-    output_html += """
-                </ul>
-            </div>
-        </div>
-    """
-
-output_html += """
-    </div>
-</body>
-</html>
-"""
+# Generate HTML content using the imported function
+output_html = generate_html_content(prompts, outputs_by_prompt, custom_ban_words)
 
 # Write the output to an HTML file
 output_file = "generated_text.html"
