@@ -166,11 +166,9 @@ Text Generation Process
     - Prompts and generated texts are organized into styled cards using Bootstrap.
     - Skipped texts are highlighted for clarity.
 
-## Fine-Tuning GPT-2 with HTML Output
+# Fine-Tuning GPT-2 with HTML Output
 
 `gpt2_fine_tuning.pyt`
-
-# README: Fine-Tuning GPT-2 with HTML Output
 
 ## Overview
 This script fine-tunes OpenAI's GPT-2 model using a small, predefined dataset and generates text based on custom prompts. It also displays the generated output in an HTML file that opens in your default web browser.
