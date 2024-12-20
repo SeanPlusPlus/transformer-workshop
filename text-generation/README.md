@@ -118,7 +118,7 @@ This approach is great for testing and understanding how different settings infl
 
 ### Controlled Text Generation
 
-```pythong controlled_text_gen.py```
+```python controlled_text_gen.py```
 
 
 **Overview**
