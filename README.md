@@ -30,3 +30,11 @@ It's been a pretty cool first for me - using ChatGPT to autogenerate an iterativ
 
     - Capture high-level notes and comparisons, such as the differences between BERT and LLaMA.
     - Organize everything into a cohesive, shareable resource.
+
+---
+
+## Main Notes
+
+The main findings from this exploration are documented here in the Notes seection:
+
+https://github.com/SeanPlusPlus/transformer-workshop/blob/main/notes/TRANSFORMERS.md
